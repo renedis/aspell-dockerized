@@ -12,5 +12,6 @@ USER aspell
 
 WORKDIR /home/aspell
 
-CMD cat *.txt | aspell --lang=en --encoding=utf-8 list | aspell --lang=fr --encoding=utf-8 list
+COPY docker-entrypoint.sh .
 
+ENTRYPOINT ["/home/aspell/docker-entrypoint.sh"]
