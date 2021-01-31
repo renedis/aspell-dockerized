@@ -12,6 +12,6 @@ USER aspell
 
 WORKDIR /home/aspell
 
-COPY docker-entrypoint.sh .
+COPY docker-entrypoint.sh /
 
-ENTRYPOINT ["/home/aspell/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
