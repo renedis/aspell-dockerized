@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:23.04
 LABEL AUTHOR Kinoba
 ENV LANG C.UTF-8
 
