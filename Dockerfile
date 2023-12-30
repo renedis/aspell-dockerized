@@ -8,6 +8,7 @@ RUN apt-get -qq update \
     && apt-get install -y --no-install-recommends \
         aspell \
         aspell-en \
+        aspell-nl \
         aspell-fr \
         ca-certificates \
         unzip \
