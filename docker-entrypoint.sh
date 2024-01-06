@@ -1,11 +1,18 @@
 #!/bin/bash
 
-echo '"Word", "Number of occurences"'
+TARGET_SRT="${TARGET_SRT:-}"
 
-set -e
-set +x
+for f in "${TARGET_SRT}" ; do 
+    echo $f
+    aspell list --lang=nl < $f | sort | uniq -c
+done
 
-SPELLING_MISTAKES=$(find "$PATH_TO_CHECK" -type f -name "$EXT_TO_CHECK" -exec bash -c "aspell --lang=en --ignore=2 --encoding=utf-8 --word-list-path=/wordlists/all.txt list < {}" \;)
-SPELLING_MISTAKES=$(echo "$SPELLING_MISTAKES" | aspell --lang=fr --ignore=2 --encoding=utf-8 --word-list-path=/wordlists/all.txt list)
+echo "Correcting now"
 
-echo "$SPELLING_MISTAKES" | sort | uniq -c | awk '{ printf "\"%s\", %s\n", $2, $1 }'
+for file in "${TARGET_SRT}"; do
+    aspell --master=nl --lang=nl -c "$file" < /dev/null
+done
+
+while true; do
+    sleep 1
+done
